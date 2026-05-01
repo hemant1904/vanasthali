@@ -18,6 +18,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-margin-top: 110px;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
   background-color: var(--bg-light);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
 }
 
 a {
@@ -202,16 +204,11 @@ header .container {
   z-index: 1000;
 }
 
-/* Make navbar taller */
 .nav-container {
   max-width: 1800px;
-  /* even broader */
   margin: auto;
-  padding: 0 4rem;
-  /* more horizontal space */
-  height: 110px;
-  /* EVEN TALLER */
-
+  padding: 0 4re m;
+  height: 105px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -221,13 +218,12 @@ header .container {
 .logo a {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   white-space: nowrap;
 
-  font-size: 1.5rem;
-  /* EVEN BIGGER */
+  font-size: 1.3rem;
+  /* Reduced from 1.5rem to prevent desktop overlap */
   font-weight: 800;
-  /* MAXIMUM BOLDNESS */
   color: var(--primary-color);
 }
 
@@ -239,8 +235,8 @@ header .container {
 /* ===== NAV LINKS ===== */
 .nav-links {
   display: flex;
-  gap: 45px;
-  /* more spacing */
+  gap: 25px;
+  /* Reduced from 45px to prevent desktop overlap */
   align-items: center;
 }
 
@@ -279,7 +275,7 @@ header .container {
   border-radius: 35px;
 }
 
-.mobile-toggle {
+.hamburger {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;

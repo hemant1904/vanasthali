@@ -22,9 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Load Navbar and Footer
-    loadComponent('navbar-placeholder', 'components/navbar.html');
-    loadComponent('footer-placeholder', 'components/footer.html');
+    // Load Navbar and Footer with cache busting
+    const version = Date.now();
+    loadComponent('navbar-placeholder', `components/navbar.html?v=${version}`);
+    loadComponent('footer-placeholder', `components/footer.html?v=${version}`);
 
     // Mobile Menu Toggle Logic
     const initMobileMenu = () => {
@@ -94,26 +95,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Load Navbar
-fetch('components/navbar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-    });
-
-// Load Footer
-fetch('components/footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-    });
+// Slideshow Logic
 let slides = document.querySelectorAll(".slide");
 let index = 0;
 
 function showNextSlide() {
+    if (!slides.length) return;
     slides[index].classList.remove("active");
     index = (index + 1) % slides.length;
     slides[index].classList.add("active");
 }
 
-setInterval(showNextSlide, 4000); // change every 4 sec
+if (slides.length) {
+    setInterval(showNextSlide, 4000); // change every 4 sec
+}

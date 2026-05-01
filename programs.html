@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs | Vanasthali</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <style>
+        .page-header {
+            padding: 8rem 0 4rem;
+            background-color: var(--bg-beige);
+            text-align: center;
+        }
+        .program-detail-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+        .program-detail-card:nth-child(even) {
+            direction: rtl;
+        }
+        .program-detail-card:nth-child(even) .detail-text {
+            direction: ltr;
+        }
+        .detail-img {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .detail-text h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .detail-text ul {
+            margin-top: 1.5rem;
+        }
+        .detail-text ul li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .detail-text ul li i {
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+        @media screen and (max-width: 992px) {
+            .program-detail-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .program-detail-card:nth-child(even) {
+                direction: ltr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Component -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Our Programs</h1>
+            <p class="section-subtitle">Comprehensive initiatives designed to address the multifaceted challenges faced by rural communities.</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            
+            <div class="program-detail-card">
+                <div class="detail-img">
+                    <img src="https://images.unsplash.com/photo-1542810634-71277d95dc8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Skill Training">
+                </div>
+                <div class="detail-text">
+                    <h3>Skill Training & Vocational Courses</h3>
+                    <p>Our skill training programs are tailored to the local economy and market demands. We believe that equipping women with marketable skills is the first step towards financial independence.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 6-month intensive tailoring and embroidery courses.</li>
+                        <li><i class="fas fa-check-circle"></i> Basic computer literacy and data entry training.</li>
+                        <li><i class="fas fa-check-circle"></i> Handicraft production utilizing local materials.</li>
+                        <li><i class="fas fa-check-circle"></i> Marketing and sales workshops to help sell products.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="program-detail-card">
+                <div class="detail-img">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Teacher Training">
+                </div>
+                <div class="detail-text">
+                    <h3>Teacher Training & Capacity Building</h3>
+                    <p>A community is only as strong as its educators. We empower local women with minimum educational qualifications to become effective teachers in pre-primary and primary schools.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Pedagogical training focusing on interactive learning.</li>
+                        <li><i class="fas fa-check-circle"></i> Child psychology and inclusive education methods.</li>
+                        <li><i class="fas fa-check-circle"></i> Development of low-cost teaching aids.</li>
+                        <li><i class="fas fa-check-circle"></i> Continuous mentorship and classroom observation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="program-detail-card">
+                <div class="detail-img">
+                    <img src="https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Livelihood Support">
+                </div>
+                <div class="detail-text">
+                    <h3>Sustainable Livelihood Support</h3>
+                    <p>Beyond training, we provide the necessary support to turn skills into sustainable livelihoods through micro-finance and cooperative formation.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Formation and support of Self-Help Groups (SHGs).</li>
+                        <li><i class="fas fa-check-circle"></i> Facilitating access to micro-credit and loans.</li>
+                        <li><i class="fas fa-check-circle"></i> Establishing market linkages for artisan products.</li>
+                        <li><i class="fas fa-check-circle"></i> Agricultural training for improved crop yields.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Support A Program</h2>
+            <p>Your contribution can directly fund a woman's training or a child's education.</p>
+            <div class="cta-btns">
+                <button class="btn btn-secondary btn-lg">Donate to Programs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

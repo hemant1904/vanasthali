@@ -205,9 +205,8 @@ header .container {
 }
 
 .nav-container {
-  max-width: 1800px;
-  margin: auto;
-  padding: 0 4re m;
+  max-width: 1600px;
+  margin: 0 30px;
   height: 105px;
   display: flex;
   align-items: center;

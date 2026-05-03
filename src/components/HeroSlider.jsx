@@ -42,19 +42,21 @@ const HeroSlider = () => {
 
       {/* TAGLINE */}
       <p className="text-green-500 font-semibold uppercase tracking-wide text-sm md:text-base mb-4">
-        Empowering Rural India
+        Uplifting Rural Lives
       </p>
 
       {/* MAIN HEADING */}
       <h1 className="text-white font-bold leading-[1.2] text-[2.4rem] md:text-[3.8rem] lg:text-[4.2rem] mb-6">
-        Empowering Rural Voice,
+        Empowering Rural
         <br />
-        Transforming Communities
+        Voice, Transforming
+        <br />
+        Communities
       </h1>
 
       {/* SUBTEXT */}
       <p className="text-gray-200 text-[1.05rem] md:text-[1.3rem] leading-relaxed mb-8">
-        Uplifting rural lives through education, healthcare, skill development and sustainable self-reliance.
+        Fostering sustainable rural development through education, healthcare, and skill empowerment.
       </p>
 
       {/* CTA */}

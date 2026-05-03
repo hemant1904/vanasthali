@@ -69,7 +69,7 @@ const LeadingNGOSection = () => {
         <h2 className="text-3xl md:text-4xl lg:text-[2.7rem] font-bold text-indigo-900 leading-[1.2]">
           Leading NGO in India for <br />
           Rural Development, Women Empowerment & <br />
-          Skill Development
+          Skill Enhancement
         </h2>
 
         <div className="w-full h-[3px] bg-green-500 mt-6 mb-6"></div>
@@ -77,31 +77,16 @@ const LeadingNGOSection = () => {
         <div className="text-gray-700 text-base md:text-lg leading-relaxed space-y-4">
 
           <p>
-            For over two decades, Vanasthali has been empowering rural communities through rural development initiatives, women and child welfare, and skill development programs. Our mission is to foster self-reliance, dignity, and sustainable growth among women, children, and families across India.
+            Vanasthali Rural Development Centre (VRDC), Pune has been a beacon of rural transformation for over four decades.
+            Guided by the inspiring motto “A Balwadi for every village,” the organization is dedicated to bridging the critical early childhood education gap while fostering holistic rural development.
           </p>
 
           <p>
-            Through grassroots initiatives and community-driven programs, Vanasthali continues to create lasting impact by empowering women, nurturing children, and strengthening rural livelihoods.
+            Through its grassroots, community-driven programs, VRDC impacts thousands of lives each year across multiple districts of Maharashtra.
           </p>
 
           <p>
-            Learn more about how Vanasthali is driving positive change across{' '}
-            <Link to="/programs" className="text-indigo-600 underline hover:text-indigo-800 font-medium">
-              rural development
-            </Link>,{' '}
-            <Link to="/programs" className="text-indigo-600 underline hover:text-indigo-800 font-medium">
-              women empowerment
-            </Link>,{' '}
-            <Link to="/programs" className="text-indigo-600 underline hover:text-indigo-800 font-medium">
-              education & skill development
-            </Link>,{' '}
-            <Link to="/programs" className="text-indigo-600 underline hover:text-indigo-800 font-medium">
-              healthcare & nutrition
-            </Link>, and{' '}
-            <Link to="/programs" className="text-indigo-600 underline hover:text-indigo-800 font-medium">
-              sustainable livelihoods
-            </Link>{' '}
-            in India.
+            At its core, Vanasthali works to empower rural communities through a strong foundation of education, women and child welfare, and skill development initiatives
           </p>
 
         </div>

@@ -16,7 +16,23 @@ const Timeline = () => {
           <div className="relative w-full md:w-1/2 pl-[70px] pr-[25px] md:pl-[40px] md:pr-[40px] py-[10px] left-0 after:content-[''] after:absolute after:w-[20px] after:h-[20px] after:bg-white after:border-4 after:border-primary after:top-[15px] after:rounded-full after:z-[1] after:left-[21px] md:after:-right-[10px] md:after:left-auto">
             <div className="p-5 md:p-8 bg-white relative rounded-[12px] shadow-sm">
               <h3 className="text-primary text-[1.5rem] md:text-[1.8rem] font-bold mb-2">1981</h3>
-              <p><strong>Foundation:</strong> VRDC was established with a small office run within Nirmalatai's home.</p>
+              <p><strong>Foundation:</strong> VRDC was established with a small office run within Nirmalatai's home on December 21, 1981 in Pune</p>
+            </div>
+          </div>
+
+          {/* Right Item */}
+          <div className="relative w-full md:w-1/2 pl-[70px] pr-[25px] md:pl-[40px] md:pr-[40px] py-[10px] left-0 md:left-1/2 after:content-[''] after:absolute after:w-[20px] after:h-[20px] after:bg-white after:border-4 after:border-primary after:top-[15px] after:rounded-full after:z-[1] after:left-[21px] md:after:-left-[10px]">
+            <div className="p-5 md:p-8 bg-white relative rounded-[12px] shadow-sm">
+              <h3 className="text-primary text-[1.5rem] md:text-[1.8rem] font-bold mb-2">1996</h3>
+              <p><strong>Expanding into Primary Education: </strong> Responding to local demand, VRDC established the Jejuri Primary School, expanding beyond pre-primary education to offer semi-English curriculum and computer training. </p>
+            </div>
+          </div>
+
+          {/* Left Item */}
+          <div className="relative w-full md:w-1/2 pl-[70px] pr-[25px] md:pl-[40px] md:pr-[40px] py-[10px] left-0 after:content-[''] after:absolute after:w-[20px] after:h-[20px] after:bg-white after:border-4 after:border-primary after:top-[15px] after:rounded-full after:z-[1] after:left-[21px] md:after:-right-[10px] md:after:left-auto">
+            <div className="p-5 md:p-8 bg-white relative rounded-[12px] shadow-sm">
+              <h3 className="text-primary text-[1.5rem] md:text-[1.8rem] font-bold mb-2">2021</h3>
+              <p><strong>Formalizing Women Empowerment: </strong> VRDC launched Gruhaudyogini, a dedicated initiative providing financial support and interest-free loans to women, enabling them to start their own household businessesno.</p>
             </div>
           </div>
 

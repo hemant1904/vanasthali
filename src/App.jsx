@@ -4,6 +4,8 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProgramsPage from './pages/ProgramsPage';
+import TestimonialPage from './pages/TestimonialPage';
+import StoriesPage from './pages/StoriesPage';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -23,7 +25,7 @@ function ScrollToTop() {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 0);
+      }, 500);
     }
   }, [pathname, hash]);
 
@@ -40,6 +42,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/programs" element={<ProgramsPage />} />
+          <Route path="/testimonial" element={<TestimonialPage />} />
+          <Route path="/stories" element={<StoriesPage />} />
         </Routes>
       </main>
       <Footer />

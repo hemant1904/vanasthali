@@ -33,6 +33,11 @@
   scroll-margin-top: 110px;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   * {
     scroll-margin-top: 80px;
@@ -179,5 +184,5 @@
 .animate-scroll {
   display: flex;
   width: max-content;
-  animation: partnerScroll 20s linear infinite;
+  animation: partnerScroll 50s linear infinite;
 }

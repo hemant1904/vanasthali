@@ -1,13 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Card } from "../components/ui/card";
-import { Eye, Target, HeartHandshake } from "lucide-react";
+import { Eye, Target, HeartHandshake, FileText, ExternalLink } from "lucide-react";
+import DonateModal from '../components/DonateModal';
 
 const AboutPage = () => {
+  const [donateOpen, setDonateOpen] = useState(false);
 
   const Counter = ({ target }) => {
     const [count, setCount] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef(null);
 
     useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 }
+      );
+      if (ref.current) observer.observe(ref.current);
+      return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+      if (!isVisible) return;
       let start = 0;
       const duration = 2000;
       const increment = target / (duration / 16);
@@ -23,17 +42,17 @@ const AboutPage = () => {
       }, 16);
 
       return () => clearInterval(counter);
-    }, [target]);
+    }, [target, isVisible]);
 
-    return <span>{count.toLocaleString()}+</span>;
+    return <span ref={ref}>{count.toLocaleString()}+</span>;
   };
 
   return (
     <div className="bg-white">
 
-      {/* 🔹 HERO SECTION */}
+      {/* HERO SECTION */}
       <div
-        className="relative h-[70vh] flex items-center justify-center text-white"
+        className="relative h-[50vh] md:h-[70vh] flex items-center justify-center text-white"
         style={{
           backgroundImage: "url('/assets/images/About_us_Background.png')",
           backgroundSize: "cover",
@@ -54,7 +73,7 @@ const AboutPage = () => {
         </div>
       </div>
 
-      {/* 🔹 WHO WE ARE */}
+      {/* WHO WE ARE */}
       <section className="py-16 px-6 max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* LEFT CONTENT */}
         <div className="flex flex-col justify-between">
@@ -83,7 +102,11 @@ const AboutPage = () => {
               alt="Children learning"
               className="w-full h-full object-cover object-center transition duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-5 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+              <p className="text-white text-sm md:text-base font-bold leading-tight drop-shadow-md">
+                Nurturing young minds through early childhood education.
+              </p>
+            </div>
           </div>
 
           {/* BOX 2 */}
@@ -93,7 +116,11 @@ const AboutPage = () => {
               alt="Women training"
               className="w-full h-full object-cover object-center transition duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-5 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+              <p className="text-white text-sm md:text-base font-bold leading-tight drop-shadow-md">
+                Empowering semi-literate rural women as educators.
+              </p>
+            </div>
           </div>
 
           {/* BOX 3 */}
@@ -103,7 +130,11 @@ const AboutPage = () => {
               alt="Community engagement"
               className="w-full h-full object-cover object-center transition duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-5 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+              <p className="text-white text-sm md:text-base font-bold leading-tight drop-shadow-md">
+                Fostering community-led sustainable rural growth.
+              </p>
+            </div>
           </div>
 
           {/* BOX 4 */}
@@ -113,16 +144,20 @@ const AboutPage = () => {
               alt="Impact"
               className="w-full h-full object-cover object-center transition duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-5 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+              <p className="text-white text-sm md:text-base font-bold leading-tight drop-shadow-md">
+                Bridging educational gaps for over 40 years.
+              </p>
+            </div>
           </div>
 
         </div>
       </section>
-      {/* 🔹 IMPACT STATS */}
+      {/* IMPACT STATS */}
       <section className="py-16 px-6">
         <div className="bg-green-700 text-white rounded-xl max-w-[1200px] mx-auto py-12 px-8 shadow-md">
 
-          <div className="flex flex-wrap md:flex-nowrap justify-between text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
 
             {/* ITEM */}
             {[
@@ -134,7 +169,7 @@ const AboutPage = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center justify-center flex-1 basis-1/5 min-w-[160px]"
+                className="flex flex-col items-center justify-center py-4"
               >
                 <h3 className="text-4xl md:text-5xl font-extrabold tracking-tight">
                   <Counter target={item.value} />
@@ -148,11 +183,11 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-      {/* 🔹 GEOGRAPHICAL PRESENCE */}
+      {/* GEOGRAPHICAL PRESENCE */}
       <section className="py-14 px-6">
         <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-10 items-center">
 
-          {/* 🔸 MAP */}
+          {/* MAP */}
           <div className="flex justify-center">
             <img
               src="/assets/images/maharashtra_map.png"
@@ -161,7 +196,7 @@ const AboutPage = () => {
             />
           </div>
 
-          {/* 🔸 TEXT */}
+          {/* TEXT */}
           <div className="text-center md:text-left">
 
             <h2 className="text-2xl md:text-3xl font-bold text-green-700 mb-4 inline-block border-b-4 border-green-600 pb-2">
@@ -189,8 +224,81 @@ const AboutPage = () => {
 
         </div>
       </section>
-      {/* 🔹 FOUNDER'S VISION */}
-      <section className="py-12 px-6">
+      {/* REPORTS & TRANSPARENCY SECTION */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-6 inline-block border-b-4 border-green-600 pb-2">
+              Our Transparency Commitment
+            </h2>
+            <p className="text-gray-600 max-w-[800px] mx-auto text-lg md:text-xl leading-relaxed">
+              Explore our annual and activity reports to see the measurable impact of our work across rural Maharashtra.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* ANNUAL REPORT 2023-2024 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group">
+              <div className="w-14 h-14 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
+                <FileText className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Annual Report 2023-24</h3>
+              <p className="text-gray-600 text-base mb-6 flex-grow leading-relaxed">
+                A comprehensive overview of our impact, financial transparency, and the lives we've touched in annual year 2023-24.
+              </p>
+              <a
+                href="/assets/reports/ANNUAL REPORT 2023-2024.pdf"
+                target="_blank"
+                className="flex items-center justify-between text-green-700 font-bold hover:text-green-800 transition-colors"
+              >
+                <span>View Report</span>
+                <ExternalLink className="w-5 h-5" />
+              </a>
+            </div>
+
+            {/* ACTIVITY REPORT */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group">
+              <div className="w-14 h-14 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
+                <FileText className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Activity Report</h3>
+              <p className="text-gray-600 text-base mb-6 flex-grow leading-relaxed">
+                Explore our on-ground initiatives, teacher training programs, and the real changes happening across rural communities.
+              </p>
+              <a
+                href="/assets/reports/VANASTHALI_ACTIVITY_REPORT.pdf"
+                target="_blank"
+                className="flex items-center justify-between text-green-700 font-bold hover:text-green-800 transition-colors"
+              >
+                <span>View Report</span>
+                <ExternalLink className="w-5 h-5" />
+              </a>
+            </div>
+
+            {/* ANNUAL REPORT 2017-2018 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group">
+              <div className="w-14 h-14 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
+                <FileText className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Annual Report 2017-18</h3>
+              <p className="text-gray-600 text-base mb-6 flex-grow leading-relaxed">
+                A look back at our journey—highlighting key milestones, growth, and our continued commitment to rural empowerment in annual year 2017-18.
+              </p>
+              <a
+                href="/assets/reports/ANNUAL REPORT 2017 -2018.pdf"
+                target="_blank"
+                className="flex items-center justify-between text-green-700 font-bold hover:text-green-800 transition-colors"
+              >
+                <span>View Report</span>
+                <ExternalLink className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDER'S VISION */}
+      <section className="py-12 px-6" id="visionary">
         <div className="bg-green-50 rounded-xl max-w-[1200px] mx-auto px-8 py-12 shadow-sm">
 
           <div className="grid md:grid-cols-10 gap-10 items-stretch">
@@ -216,24 +324,29 @@ const AboutPage = () => {
 
             </div>
 
-            {/* 🔸 IMAGE + INFO (30%) */}
-            <div className="md:col-span-3 flex flex-col items-center justify-center text-center">
-
-              {/* IMAGE FRAME */}
-              <div className="w-full max-w-[300px] h-[360px] rounded-2xl overflow-hidden shadow-lg group">
-                <img
-                  src="/assets/images/Founders Photo.png"
-                  alt="Founder Nirmala Purandare"
-                  className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                />
+             {/* IMAGE + INFO (30%) */}
+            <div className="md:col-span-3 flex flex-col items-center">
+              
+              <div className="relative group w-full max-w-[280px] mb-8">
+                {/* DECORATIVE FRAME */}
+                <div className="absolute -inset-4 bg-green-100 rounded-[2rem] transform rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+                
+                {/* IMAGE CONTAINER */}
+                <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-200">
+                  <img
+                    src="/assets/images/Founders  photo.png"
+                    alt="Founder Nirmala Purandare"
+                    className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                  />
+                </div>
               </div>
 
               {/* NAME + TITLE */}
-              <div className="mt-4">
-                <h2 className="text-lg font-semibold text-green-700">
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-green-800">
                   Nirmala Balwant Purandare
-                </h2>
-                <p className="text-sm text-gray-600">
+                </h3>
+                <p className="text-gray-600 font-medium mt-1">
                   Founder, Vanasthali Rural Development Centre
                 </p>
               </div>
@@ -370,18 +483,27 @@ const AboutPage = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
 
             {/* Primary */}
-            <button className="bg-white text-green-700 px-7 py-3 rounded-full font-semibold shadow-md hover:bg-gray-100 hover:scale-105 transition duration-300">
+            <button 
+              onClick={() => setDonateOpen(true)}
+              className="bg-white text-green-700 px-7 py-3 rounded-full font-semibold shadow-md hover:bg-gray-100 hover:scale-105 transition duration-300"
+            >
               Donate Now
             </button>
 
             {/* Secondary (optional but recommended) */}
-            <button className="border border-white px-7 py-3 rounded-full font-semibold hover:bg-white hover:text-green-700 transition duration-300">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScIu571TRGETKdjeBrrWgN9CRWTgV3mr681GiFTdg5jTvw3sA/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white px-7 py-3 rounded-full font-semibold hover:bg-white hover:text-green-700 transition duration-300 inline-block text-center"
+            >
               Get Involved
-            </button>
+            </a>
 
           </div>
 
         </div>
+        <DonateModal open={donateOpen} handleClose={() => setDonateOpen(false)} />
       </section>
     </div>
   );

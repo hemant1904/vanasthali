@@ -331,12 +331,10 @@ const FounderSection = () => {
         {/* Quote */}
         <p className="text-white text-sm md:text-base lg:text-lg font-medium leading-relaxed mt-4 italic">
           I started Vanasthali with the belief that real change in rural India begins with early education. My vision of “A Balwadi for every village” was to prepare children before formal schooling and reduce dropouts. I also believed in empowering local women as educators, so that change comes from within the community. For me, education is the key to building awareness, confidence, and a self-reliant rural society.
+          <span className="text-yellow-400 text-3xl opacity-50 ml-1 translate-y-1 inline-block leading-none">
+            &rdquo;
+          </span>
         </p>
-
-        {/* Closing quote */}
-        <span className="absolute bottom-17 right-48 text-yellow-400 text-3xl opacity-50">
-          &rdquo;
-        </span>
 
         {/* Attribution */}
         <p className="text-sm md:text-base font-semibold text-gray-100 mt-3 border-l-2 border-yellow-400 pl-3">

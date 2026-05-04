@@ -63,13 +63,11 @@ const AboutPage = () => {
 
         <div className="relative text-center px-6 max-w-[900px]">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-center">
-            <span className="block">Empowering Minds.</span>
-            <span className="block">Transforming Communities.</span>
+            <span className="block">About us</span>
           </h1>
 
           <p className="text-lg md:text-xl text-gray-200 max-w-[700px] mx-auto">
-            Empowering rural communities through early childhood education and women’s leadership across Maharashtra.
-          </p>
+            Shaping young minds and fostering independence through learning and opportunity          </p>
         </div>
       </div>
 
@@ -324,13 +322,13 @@ const AboutPage = () => {
 
             </div>
 
-             {/* IMAGE + INFO (30%) */}
+            {/* IMAGE + INFO (30%) */}
             <div className="md:col-span-3 flex flex-col items-center">
-              
+
               <div className="relative group w-full max-w-[280px] mb-8">
                 {/* DECORATIVE FRAME */}
                 <div className="absolute -inset-4 bg-green-100 rounded-[2rem] transform rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
-                
+
                 {/* IMAGE CONTAINER */}
                 <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-200">
                   <img
@@ -483,7 +481,7 @@ const AboutPage = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
 
             {/* Primary */}
-            <button 
+            <button
               onClick={() => setDonateOpen(true)}
               className="bg-white text-green-700 px-7 py-3 rounded-full font-semibold shadow-md hover:bg-gray-100 hover:scale-105 transition duration-300"
             >

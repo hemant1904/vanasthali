@@ -66,105 +66,105 @@ const Navbar = () => {
             {/* Desktop Nav */}
             <ul className="hidden lg:flex items-center gap-10">
 
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  to={link.path}
-                  className={`text-[15px] font-semibold relative transition-colors duration-300 ${isActive(link.path) ? 'text-green-700' : 'text-gray-700 hover:text-green-700'
-                    }`}
-                >
-                  {link.name}
-
-                  {/* Underline */}
-                  <span
-                    className={`absolute left-0 -bottom-1 h-[2px] bg-green-600 transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className={`text-[15px] font-semibold relative transition-colors duration-300 ${isActive(link.path) ? 'text-green-700' : 'text-gray-700 hover:text-green-700'
                       }`}
-                  ></span>
-                </Link>
+                  >
+                    {link.name}
+
+                    {/* Underline */}
+                    <span
+                      className={`absolute left-0 -bottom-1 h-[2px] bg-green-600 transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
+                        }`}
+                    ></span>
+                  </Link>
+                </li>
+              ))}
+
+              {/* Donate Button */}
+              <li>
+                <Button
+                  variant="contained"
+                  onClick={() => setDonateOpen(true)}
+                  sx={{
+                    borderRadius: '999px',
+                    px: '22px',
+                    py: '8px',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    backgroundColor: '#2e7d32',
+                    color: '#ffffff',
+                    textTransform: 'none',
+                    boxShadow: 'none',
+                    '&:hover': {
+                      backgroundColor: '#1b5e20',
+                      transform: 'translateY(-1px)',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    },
+                  }}
+                >
+                  Donate Now
+                </Button>
               </li>
-            ))}
 
-            {/* Donate Button */}
-            <li>
-              <Button
-                variant="contained"
-                onClick={() => setDonateOpen(true)}
-                sx={{
-                  borderRadius: '999px',
-                  px: '22px',
-                  py: '8px',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                  backgroundColor: '#2e7d32',
-                  color: '#ffffff',
-                  textTransform: 'none',
-                  boxShadow: 'none',
-                  '&:hover': {
-                    backgroundColor: '#1b5e20',
-                    transform: 'translateY(-1px)',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                  },
-                }}
-              >
-                Donate Now
-              </Button>
-            </li>
+            </ul>
 
-          </ul>
+            {/* Mobile Nav */}
+            <div className="lg:hidden">
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger asChild>
+                  <button className="p-2 text-green-700">
+                    <Menu size={26} />
+                  </button>
+                </SheetTrigger>
 
-          {/* Mobile Nav */}
-          <div className="lg:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <button className="p-2 text-green-700">
-                  <Menu size={26} />
-                </button>
-              </SheetTrigger>
+                <SheetContent className="w-[280px] bg-white p-8 shadow-xl">
+                  <SheetHeader>
+                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                  </SheetHeader>
 
-              <SheetContent className="w-[280px] bg-white p-8 shadow-xl">
-                <SheetHeader>
-                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                </SheetHeader>
+                  <ul className="flex flex-col items-center justify-center h-full gap-6">
+                    {navLinks.map((link) => (
+                      <li key={link.name} className="w-full text-center">
+                        <Link
+                          to={link.path}
+                          onClick={() => setIsOpen(false)}
+                          className={`text-lg font-semibold ${isActive(link.path) ? 'text-green-700' : 'text-gray-700'
+                            }`}
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
 
-                <ul className="flex flex-col items-center justify-center h-full gap-6">
-                  {navLinks.map((link) => (
-                    <li key={link.name} className="w-full text-center">
-                      <Link
-                        to={link.path}
-                        onClick={() => setIsOpen(false)}
-                        className={`text-lg font-semibold ${isActive(link.path) ? 'text-green-700' : 'text-gray-700'
-                          }`}
+                    <li className="w-full mt-4">
+                      <Button
+                        variant="contained"
+                        fullWidth
+                        onClick={() => {
+                          setIsOpen(false);
+                          setDonateOpen(true);
+                        }}
+                        sx={{
+                          borderRadius: '999px',
+                          py: '10px',
+                          fontSize: '1rem',
+                          fontWeight: 600,
+                          backgroundColor: '#2e7d32',
+                          color: '#ffffff',
+                          textTransform: 'none',
+                        }}
                       >
-                        {link.name}
-                      </Link>
+                        Donate Now
+                      </Button>
                     </li>
-                  ))}
-
-                  <li className="w-full mt-4">
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      onClick={() => {
-                        setIsOpen(false);
-                        setDonateOpen(true);
-                      }}
-                      sx={{
-                        borderRadius: '999px',
-                        py: '10px',
-                        fontSize: '1rem',
-                        fontWeight: 600,
-                        backgroundColor: '#2e7d32',
-                        color: '#ffffff',
-                        textTransform: 'none',
-                      }}
-                    >
-                      Donate Now
-                    </Button>
-                  </li>
-                </ul>
-              </SheetContent>
-            </Sheet>
-          </div>
+                  </ul>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
 
         </div>

@@ -1,132 +1,193 @@
 import { Button } from '@mui/material';
-import { CheckCircle, School, BookOpen, Microscope, Book, Sun, GraduationCap } from 'lucide-react';
-import DonateModal from '../components/DonateModal';
-import { useState } from 'react';
 
-const ProgramCard = ({ title, description, items, image, icon: Icon, reverse }) => (
-  <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center mb-32 group`}>
-    {/* IMAGE FRAME */}
-    <div className="w-full lg:w-1/2 relative">
-      <div className="absolute -inset-2 md:-inset-4 bg-green-100 rounded-3xl -rotate-1 md:-rotate-2 group-hover:rotate-0 transition-transform duration-500 opacity-50"></div>
-      <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+import { useState } from "react";
+import {
+  CheckCircle,
+  School,
+  BookOpen,
+  Microscope,
+  Book,
+  Sun,
+  GraduationCap,
+} from "lucide-react";
+import DonateModal from "../components/DonateModal";
+
+const ProgramCard = ({
+  title,
+  description,
+  items,
+  image,
+  icon: Icon,
+}) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+  <div className="group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
+
+    {/* Image */}
+    <div className="relative overflow-hidden">
+
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+
+      {/* Dark Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+      {/* Icon + Title */}
+      <div className="absolute bottom-5 left-5 flex items-center gap-3">
+
+        <div className="bg-green-600 text-white p-3 rounded-full shadow-xl">
+          <Icon size={24} />
+        </div>
+
+        <h3 className="text-2xl font-bold text-white">
+          {title}
+        </h3>
+
       </div>
+
     </div>
 
-    {/* CONTENT BOX */}
-    <div className="w-full lg:w-1/2 space-y-6">
-      <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
-        {title}
-      </h3>
-      <p className="text-gray-600 leading-relaxed text-lg italic border-l-4 border-green-600 pl-4">
-        {description}
+    {/* Green Line */}
+    <div className="h-1 bg-gradient-to-r from-green-500 to-green-700"></div>
+
+    {/* Content */}
+    <div className="p-7">
+
+      <p className="text-gray-600 leading-7">
+        {expanded
+          ? description
+          : description.substring(0, 110) + "..."}
       </p>
-      
-      <div className="grid grid-cols-1 gap-4 pt-4">
-        {items.map((item, i) => (
-          <div key={i} className="flex items-start gap-3 group/item">
-            <div className="mt-1 bg-green-100 text-green-700 p-1 rounded-full group-hover/item:bg-green-700 group-hover/item:text-white transition-colors duration-300">
-              <CheckCircle className="w-4 h-4" />
-            </div>
-            <span className="text-gray-700 font-medium">{item}</span>
+
+      {/* Bullet Points */}
+      <div
+        className={`overflow-hidden transition-all duration-500 ${
+          expanded ? "max-h-[500px] mt-6" : "max-h-[120px] mt-6"
+        }`}
+      >
+        {(expanded ? items : items.slice(0, 2)).map((item, index) => (
+          <div key={index} className="flex items-start gap-3 mb-3">
+
+            <CheckCircle
+              size={18}
+              className="text-green-600 mt-1 flex-shrink-0"
+            />
+
+            <p className="text-gray-700">
+              {item}
+            </p>
+
           </div>
         ))}
       </div>
+
+      {/* Read More */}
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="mt-6 px-6 py-2 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-all duration-300"
+      >
+        {expanded ? "Show Less ↑" : "Read More →"}
+      </button>
+
     </div>
+
   </div>
-);
+);};
 
 const ProgramsPage = () => {
   const [donateOpen, setDonateOpen] = useState(false);
   const programs = [
-    {
+        {
       title: "Balewadi Pre-schools",
       icon: School,
       image: "/assets/images/primary-school.jpg",
-      description: "Providing pre-primary education to children in rural areas, focusing on holistic development and school readiness.",
+      description:
+        "Providing pre-primary education to children in rural areas, focusing on holistic development and school readiness.",
       items: [
         "Provides early childhood education for ages 3–6.",
-        "Builds discipline, habits, and social skills based on child psychology.",
-        "Includes games, recitation, and creative activities for development.",
-        "Introduces basic reading, writing, and arithmetic.",
-        "Ensures nursery education access for underserved communities."
-      ]
+        "Builds discipline, habits, and social skills.",
+        "Includes games, recitation and creative activities.",
+        "Introduces reading, writing and arithmetic.",
+        "Ensures nursery education for underserved communities.",
+      ],
     },
     {
       title: "Teacher Training Course",
       icon: GraduationCap,
       image: "/assets/images/teacher-training.jpg",
-      description: "Empowering local women to become educators, improving the quality of primary education in rural schools.",
+      description:
+        "Empowering local women to become educators and improve the quality of rural education.",
       items: [
-        "Structured 6-month programme to become educators and leaders.",
-        "Covers child psychology, health, nutrition & social welfare.",
-        "Training in teaching methods, learning aids, and creative arts.",
-        "Builds confidence with social recognition and economic independence.",
-        "Prepares graduates for roles in educational institutions."
+        "Structured 6-month teacher training.",
+        "Child psychology, health and nutrition.",
+        "Creative teaching methods.",
+        "Confidence and leadership development.",
+        "Career opportunities in education.",
       ],
-      reverse: true
     },
     {
       title: "Leap Learning Enhancement",
       icon: BookOpen,
       image: "/assets/images/leap-learning.jpg",
-      description: "Leveraging technology to bridge educational gaps and provide personalized learning experiences to students.",
+      description:
+        "Technology-enabled learning to strengthen reading, writing and overall academic performance.",
       items: [
-        "Provides daily enrichment sessions for children aged 6–12.",
-        "Strengthens reading and writing skills for those lagging.",
-        "Encourages creativity through drawing, theatre, and poetry.",
-        "Promotes environmental sensitivity through projects.",
-        "Builds confidence and interest in studies through engagement."
-      ]
+        "Daily enrichment sessions.",
+        "Improves reading and writing skills.",
+        "Drawing, theatre and poetry.",
+        "Environmental awareness projects.",
+        "Boosts confidence and learning interest.",
+      ],
     },
     {
       title: "Science Exhibition & Labs",
       icon: Microscope,
       image: "/assets/images/science-expo.jpg",
-      description: "Empowering young minds through hands-on scientific exploration, innovation, and experimentation.",
+      description:
+        "Hands-on science learning through experiments, innovation and practical activities.",
       items: [
-        "Performing experiments despite limited school facilities.",
-        "Encourages observation and independent understanding.",
-        "Provides “Vidnyan Petya” science kits for classroom use.",
-        "Organizes Science Day exhibitions for student projects.",
-        "Partners with expert organizations like QUEST and IUCAA."
+        "Science experiments for schools.",
+        "Observation-based learning.",
+        "Science kits for classrooms.",
+        "Science Day exhibitions.",
+        "Support from QUEST & IUCAA.",
       ],
-      reverse: true
     },
     {
       title: "Library Programmes",
       icon: Book,
       image: "/assets/images/library.jpg",
-      description: "Running evening learning centers and libraries to support school-going children and combat dropout rates.",
+      description:
+        "Encouraging reading habits through community libraries and mobile book initiatives.",
       items: [
-        "Distributes 1000s of books across centers for all ages.",
-        "Delivers books to villages lacking library infrastructure.",
-        "Promotes reading through storytelling and skits.",
-        "Brings books directly to households via doorstep library.",
-        "Strengthens access to information via “Vachanalayas”."
-      ]
+        "Thousands of books distributed.",
+        "Village library access.",
+        "Storytelling and reading sessions.",
+        "Doorstep library service.",
+        "Community reading programmes.",
+      ],
     },
     {
       title: "Summer & Winter Camps",
       icon: Sun,
       image: "/assets/images/summer-camp.jpg",
-      description: "Organizing camps during vacations to engage children in constructive activities, art, and cultural exploration.",
+      description:
+        "Creative camps that help children explore art, culture and teamwork during vacations.",
       items: [
-        "Organizes 3–5 day residential and day camps.",
-        "Includes mask making, pottery, puppetry, and folk arts.",
-        "Brings children from different villages for shared learning.",
-        "Involves locals in supporting and hosting activities.",
-        "Offers special sessions like bird watching with experts."
+        "3–5 day residential camps.",
+        "Pottery, puppetry and folk arts.",
+        "Learning with children from other villages.",
+        "Community participation.",
+        "Nature and bird watching activities.",
       ],
-      reverse: true
-    }
+    },
   ];
 
+  
   return (
     <div className="bg-white">
       {/* HERO SECTION */}
@@ -154,15 +215,23 @@ const ProgramsPage = () => {
       <section className="py-24 px-6">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-20">
+            
             <h2 className="text-3xl md:text-5xl font-bold text-green-700 mb-6 inline-block border-b-4 border-green-600 pb-2">Empowering Through Action</h2>
             <p className="text-gray-600 text-lg max-w-[800px] mx-auto">
               Our diverse range of programs focuses on early childhood education, teacher empowerment, and community engagement to ensure sustainable rural development.
             </p>
           </div>
 
-          {programs.map((prog, index) => (
-            <ProgramCard key={index} {...prog} />
-          ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-10">
+
+    {programs.map((prog,index)=>(
+        <ProgramCard
+            key={index}
+            {...prog}
+        />
+    ))}
+
+</div>
         </div>
       </section>
 

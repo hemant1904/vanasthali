@@ -292,6 +292,42 @@ const AboutPage = () => {
                 <ExternalLink className="w-5 h-5" />
               </a>
             </div>
+            {/* Rural Development report */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group">
+              <div className="w-14 h-14 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
+                <FileText className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Rural Development Report</h3>
+              <p className="text-gray-600 text-base mb-6 flex-grow leading-relaxed">
+                Explore our on-ground initiatives, teacher training programs, and the real changes happening across rural communities.
+              </p>
+              <a
+                href="https://dmeo.gov.in/sites/default/files/2021-07/5_Sector_Report_Rural_Development.pdf"
+                target="_blank"
+                className="flex items-center justify-between text-green-700 font-bold hover:text-green-800 transition-colors"
+              >
+                <span>View Report</span>
+                <ExternalLink className="w-5 h-5" />
+              </a>
+            </div>
+            {/* Evaluating Development Interventions */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group">
+              <div className="w-14 h-14 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
+                <FileText className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Evaluating Development Interventions </h3>
+              <p className="text-gray-600 text-base mb-6 flex-grow leading-relaxed">
+                A Decade of Doing More: Evaluating Development Interventions in India’s Rural Frontiers
+              </p>
+              <a
+                href="https://www.orfonline.org/research/a-decade-of-doing-more-evaluating-development-interventions-in-india-s-rural-frontiers"
+                target="_blank"
+                className="flex items-center justify-between text-green-700 font-bold hover:text-green-800 transition-colors"
+              >
+                <span>View Report</span>
+                <ExternalLink className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -430,6 +466,8 @@ const AboutPage = () => {
                 "/assets/images/partner_aboutus8.png",
                 "/assets/images/partner_aboutus9.png",
                 "/assets/images/partner_aboutus10.png",
+                "/assets/images/partner_abouts11.png",
+                "/assets/images/partner_abouts13.png",
               ]
                 // 🔁 DUPLICATE FOR INFINITE LOOP
                 .concat([
@@ -443,16 +481,39 @@ const AboutPage = () => {
                   "/assets/images/partner_aboutus8.png",
                   "/assets/images/partner_aboutus9.png",
                   "/assets/images/partner_aboutus10.png",
+                  "/assets/images/partner_abouts11.png",
+                  "/assets/images/partner_abouts13.png",
+
                 ])
                 .map((logo, i) => (
                   <div
                     key={i}
                     className="w-44 h-24 bg-white rounded-xl shadow-md flex items-center justify-center p-4 hover:shadow-lg transition duration-300"
                   >
-                    <img
-                      src={logo}
-                      alt="Partner Logo"
-                      className="max-h-full max-w-full object-contain opacity-00 group-hover:opacity-100 transition duration-300" />
+                    {(logo === "/assets/images/partner_abouts11.png" ||
+  logo === "/assets/images/partner_abouts13.png") ? (
+  <a
+    href={
+      logo === "/assets/images/partner_abouts11.png"
+        ? "https://itcportal.com/home.html"
+        : "https://www.csrbox.org/index.php"
+    }
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      src={logo}
+      alt="Partner Logo"
+      className="max-h-full max-w-full object-contain"
+    />
+  </a>
+) : (
+  <img
+    src={logo}
+    alt="Partner Logo"
+    className="max-h-full max-w-full object-contain"
+  />
+)}
                   </div>
                 ))}
 
